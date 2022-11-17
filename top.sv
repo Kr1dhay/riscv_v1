@@ -13,6 +13,4 @@ module top(
 
 
 
-
-
 endmodule
