@@ -14,7 +14,7 @@ end;
 
 always_comb begin
     // output is asynchronous
-    RD <= rom_array[A];
+    RD = rom_array[A];
 end
 
 endmodule

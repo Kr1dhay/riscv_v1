@@ -8,8 +8,8 @@ module ext32 #(
 );
 
 always_comb begin
-    if (immSrc == 1) immOp <= {{(OUT_WIDTH-12){imm12[11]}},imm12};
-    else             immOp <= {{(OUT_WIDTH-12){1'b0}},imm12};
+    if (immSrc == 1) immOp = {{(OUT_WIDTH-12){imm12[11]}},imm12};
+    else             immOp = {{(OUT_WIDTH-12){1'b0}},imm12};
 end
 
 endmodule
