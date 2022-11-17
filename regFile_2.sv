@@ -22,8 +22,9 @@ end; */
 
 always_ff @(posedge clk)
 begin
-    dout1 <= rom_array[addr1];
-    dout2 <= rom_array[addr1 + offset];
+    rd1 <= rom_array[ad1];
+    rd2 <= rom_array[ad2];
+    
 end
     
 endmodule
