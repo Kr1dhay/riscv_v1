@@ -20,11 +20,13 @@ logic [DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0];
     $readmemh("sinerom.mem", rom_array);
 end; */
 
+always_comb begin
+    rd1 = rom_array[ad1];
+    rd2 = rom_array[ad2];
+end;
+
 always_ff @(posedge clk)
-begin
-    rd1 <= rom_array[ad1];
-    rd2 <= rom_array[ad2];
-    
-end
+    if(we3) rom_array[ad3] <= wd3;
+
     
 endmodule
