@@ -1,4 +1,4 @@
-module regFile_2 #(
+module regFile #(
     parameter ADDRESS_WIDTH = 5,
               DATA_WIDTH = 32
 )(
@@ -10,7 +10,7 @@ module regFile_2 #(
     input logic [DATA_WIDTH-1:0] wd3,
     output logic [DATA_WIDTH-1:0] rd1,
     output logic [DATA_WIDTH-1:0] rd2,
-    output logic a0
+    output logic [DATA_WIDTH-1:0] a0
 );
 
 logic [DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0];
@@ -23,6 +23,7 @@ end; */
 always_comb begin
     rd1 = rom_array[ad1];
     rd2 = rom_array[ad2];
+    a0 = rom_array[5'b1010];
 end;
 
 always_ff @(posedge clk)
