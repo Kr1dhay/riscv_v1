@@ -8,7 +8,9 @@ module alu (
 
 always_comb begin
     if(aluCTR == 3'b0) sum = aluOp1 + aluOp2;
-    else if(alu == 3'b11) eq = 1
+    else sum = 32'b0;
+    if(aluOp1 == aluOp2) eq = 1;
+    else eq = 0;
 end
 
 endmodule
