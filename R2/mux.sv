@@ -7,6 +7,6 @@ module mux(
 
     always_comb
         aluOp2 = aluSrc ? immOp : regOp2;
-
+        
 
 endmodule
