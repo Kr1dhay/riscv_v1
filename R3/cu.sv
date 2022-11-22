@@ -71,7 +71,8 @@ always_comb begin
     endcase
 end
 
-//ImmSrc LOGIC
+/*ImmSrc LOGIC: within each instruction type, there are specific cases for unsigned or signed extension.
+                These are only necessary for instructions that use immediate */
 always_comb begin
     case (Op)
         //Loading instructions
