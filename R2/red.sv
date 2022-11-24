@@ -1,21 +1,24 @@
-module top(
+module red #(
+    parameter ADDRESS_WIDTH = 5,
+              DATA_WIDTH = 32
+)(
     input wire clk,
     input wire rst,
     output wire a0,
-    input wire ad1,
-    input wire ad2,
-    input wire ad3,
+    input wire [ADDRESS_WIDTH - 1:0] ad1,
+    input wire [ADDRESS_WIDTH - 1:0] ad2,
+    input wire [ADDRESS_WIDTH - 1:0] ad3,
     input wire we3,
     input wire aluSrc,
-    input wire aluCTR,
+    input wire [3:0] aluCTR,
     output wire eq,
-    input wire immOp
+    input wire [DATA_WIDTH - 1:0] immOp
 );
 
-wire aluOut;
-wire aluOp1;
-wire regOp2;
-wire aluOp2;
+wire [DATA_WIDTH - 1:0] aluOut;
+wire [DATA_WIDTH - 1:0] aluOp1;
+wire [DATA_WIDTH - 1:0] regOp2;
+wire [DATA_WIDTH - 1:0] aluOp2;
 
 
 regFile myRegFile(
@@ -24,18 +27,25 @@ regFile myRegFile(
     .ad3(ad3),
     .we3(we3),
     .wd3(aluOut),
-    .rd1(),
-    .rd2(),
-    .a0(),
+    .rd1(aluOp1),
+    .rd2(regOp2),
+    .a0(a0),
     .clk(clk)
 );
 
 mux myMux(
-    
+    .regOp2(regOp2),
+    .aluSrc(aluSrc),
+    .immOp(immOp),
+    .aluOp2(aluOp2)
 );
 
 alu myAlu(
-    
+    .aluOp1(aluOp1),
+    .aluOp2(aluOp2),
+    .aluCTR(aluCTR),
+    .sum(aluOut),
+    .eq(eq)
 );
 
 endmodule
