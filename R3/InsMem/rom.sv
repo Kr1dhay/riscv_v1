@@ -1,9 +1,9 @@
-module ROM #(
+module rom #(
     parameter   ADDRESS_WIDTH = 32,
                 DATA_WIDTH = 8    
 )(
-    input logic [WIDTH-1:0] A,
-    output logic [(4*WIDTH)-1:0] RD
+    input logic [ADDRESS_WIDTH-1:0] A,
+    output logic [(4*DATA_WIDTH)-1:0] RD
 );
 
 logic [DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0]; //Byte addressing means that first 2 bits of address are not considered

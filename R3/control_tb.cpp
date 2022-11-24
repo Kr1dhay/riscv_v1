@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vcu.h"
+#include "Vcontrol.h"
 
 int main(int argc, char **argv, char **env) {
     int cyc;
@@ -8,25 +8,27 @@ int main(int argc, char **argv, char **env) {
 
     Verilated::commandArgs(argc,argv);
     //init verilog instance
-    Vcu* CU = new Vcu;
+    Vcontrol* top = new Vcontrol;
     //init trace dump
     Verilated::traceEverOn(true);
     VerilatedVcdC* tfp = new VerilatedVcdC;
     top->trace (tfp, 99);
-    tfp->open ("Vcu.vcd");
+    tfp->open ("Vcontrol.vcd");
 
     //intialize simulation inputs
     top->clk = 1;
-    top->rst = 1;
-    top->en = 0;
+    top->PC = 0;
+    top->EQ = 1;
 
     for (cyc = 0; cyc < 5; cyc++) {
         
         //dump variables into VCD file and toggle clock
         for (clk = 0; clk<2; clk++) {
-            tfp->dump (2*i+clk);            //unit is in ps!!!
+            tfp->dump (2*cyc+clk);            //unit is in ps!!!
             top->clk = !top->clk;
             top->eval ();
         }
+
+        top->PC = cyc;
     }
 }
