@@ -8,7 +8,7 @@ module rom #(
 );
 
 logic [DATA_WIDTH-1:0] rom_array [2**PRACTICAL_WIDTH-1:0];
-wire practA= A[PRACTICAL_WIDTH-1:0];
+wire [PRACTICAL_WIDTH-1:0] practA = A[PRACTICAL_WIDTH-1:0];
 
 initial begin
     $display("Loading rom.");

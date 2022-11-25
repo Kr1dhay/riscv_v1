@@ -54,9 +54,9 @@ always_comb begin
     endcase
 end
 
-//ALUsrc LOGIC: all instructions use a form of the immediate (1) apart from R type (0)
+//ALUsrc LOGIC: all instructions use a form of the immediate (1) apart from R type (0) and Branch
 always_comb begin
-    ALUsrc = ~(Op == REG);
+    ALUsrc = ~(Op == REG | Op == BRANCH);
 end
 
 /*ImmSrc LOGIC: The immediate operand is represented by different sections of the instruction word
