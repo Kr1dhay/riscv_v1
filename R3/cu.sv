@@ -10,7 +10,7 @@ module cu (
     output logic                    PCsrc       //Selects PC addressing between PC:=PC+4 and PC:=Imm32
 );
 
-logic   [1:0]         ALUOp;
+wire   [1:0]          ALUOp;
 logic                 Branch;
 logic                 NEG;
 

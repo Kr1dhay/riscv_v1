@@ -16,8 +16,8 @@ module control (
     output logic    [31:0]          ImmOp
 );
 
-logic [31:0]    ins;
-logic [1:0]     ImmSrc;
+wire [31:0]    ins;
+wire [1:0]      ImmSrc;
 //logic [31:0] PC1;
 
 rom rom (

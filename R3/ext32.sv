@@ -13,7 +13,6 @@ always_comb begin
         /*S*/   2'b01:  ImmExt[11:0] = {msb25[31:25], msb25[11:7]};
         /*B*/   2'b10:  ImmExt[11:0] = {msb25[7], msb25[30:25], msb25[11:8], 1'b0};
         /*U*/   2'b11:  ImmExt = {msb25[31:12], 12'b0};
-                default: 
     endcase
 end
 
