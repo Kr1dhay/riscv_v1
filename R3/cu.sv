@@ -12,6 +12,9 @@ module cu (
 
 logic   [1:0]         ALUOp;
 logic                 Branch;
+logic                 NEG;
+
+assign NEG = funct3[0];
 
 ALUdec ALUdec (
     .ALUOp(ALUOp),
@@ -31,7 +34,5 @@ MAINdec MAINdec (
 
 //PCsrc logic
 always_comb
-    PCsrc = EQ & Branch;
-
-
+    PCsrc = (NEG ^ EQ) & Branch;
 endmodule

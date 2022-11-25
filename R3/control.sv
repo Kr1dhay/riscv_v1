@@ -1,9 +1,3 @@
-`include "ControlUnit/ALUdec.sv"
-`include "ControlUnit/MAINdec.sv"
-`include "ControlUnit/cu.sv"
-`include "InsMem/rom.sv"
-//`include "InsMem/program.mem"
-
 module control (
     input logic                     clk,
     input logic     [31:0]          PC,
@@ -17,9 +11,10 @@ module control (
 );
 
 logic [31:0] ins;
+logic [31:0] PC1;
 
 rom rom (
-    .A(PC),
+    .A(PC1),
     .RD(ins)
 );
 
@@ -40,5 +35,8 @@ ext32 ext32 (
     .msb25(ins[31:7]),
     .ImmExt(ImmExt)
 );
+
+always_ff @(posedge clk)
+    PC1 <= PC;
 
 endmodule

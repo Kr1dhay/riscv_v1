@@ -10,36 +10,35 @@ extern const VlUnpacked<CData/*0:0*/, 128> Vcontrol__ConstPool__TABLE_ha3782434_
 extern const VlUnpacked<CData/*1:0*/, 128> Vcontrol__ConstPool__TABLE_h090a41b9_0;
 extern const VlUnpacked<CData/*1:0*/, 128> Vcontrol__ConstPool__TABLE_h8146b397_0;
 
-VL_INLINE_OPT void Vcontrol___024root___combo__TOP__0(Vcontrol___024root* vlSelf) {
+VL_INLINE_OPT void Vcontrol___024root___sequent__TOP__0(Vcontrol___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vcontrol__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcontrol___024root___combo__TOP__0\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcontrol___024root___sequent__TOP__0\n"); );
     // Init
     CData/*6:0*/ __Vtableidx1;
     CData/*6:0*/ __Vtableidx2;
     CData/*6:0*/ __Vtableidx3;
     // Body
+    vlSelf->control__DOT__PC1 = vlSelf->PC;
     vlSelf->control__DOT__ins = ((vlSelf->control__DOT__rom__DOT__rom_array
-                                  [(1U & vlSelf->PC)] 
+                                  [(0xfffffU & vlSelf->control__DOT__PC1)] 
                                   << 0x18U) | ((vlSelf->control__DOT__rom__DOT__rom_array
-                                                [(1U 
+                                                [(0xfffffU 
                                                   & ((IData)(1U) 
-                                                     + vlSelf->PC))] 
+                                                     + vlSelf->control__DOT__PC1))] 
                                                 << 0x10U) 
                                                | ((vlSelf->control__DOT__rom__DOT__rom_array
                                                    [
-                                                   (1U 
-                                                    & vlSelf->PC)] 
+                                                   (0xfffffU 
+                                                    & ((IData)(2U) 
+                                                       + vlSelf->control__DOT__PC1))] 
                                                    << 8U) 
                                                   | vlSelf->control__DOT__rom__DOT__rom_array
                                                   [
-                                                  (1U 
-                                                   & ((IData)(1U) 
-                                                      + vlSelf->PC))])));
+                                                  (0xfffffU 
+                                                   & ((IData)(3U) 
+                                                      + vlSelf->control__DOT__PC1))])));
     vlSelf->ALUsrc = (0x33U != (0x7fU & vlSelf->control__DOT__ins));
-    vlSelf->PCsrc = ((IData)(vlSelf->EQ) & (0x63U == 
-                                            (0x7fU 
-                                             & vlSelf->control__DOT__ins)));
     __Vtableidx2 = (0x7fU & vlSelf->control__DOT__ins);
     vlSelf->RegWrite = Vcontrol__ConstPool__TABLE_ha3782434_0
         [__Vtableidx2];
@@ -103,13 +102,30 @@ VL_INLINE_OPT void Vcontrol___024root___combo__TOP__0(Vcontrol___024root* vlSelf
                                            >> 0x14U)))));
 }
 
+VL_INLINE_OPT void Vcontrol___024root___combo__TOP__0(Vcontrol___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vcontrol__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcontrol___024root___combo__TOP__0\n"); );
+    // Body
+    vlSelf->PCsrc = (((vlSelf->control__DOT__ins >> 0xcU) 
+                      ^ (IData)(vlSelf->EQ)) & (0x63U 
+                                                == 
+                                                (0x7fU 
+                                                 & vlSelf->control__DOT__ins)));
+}
+
 void Vcontrol___024root___eval(Vcontrol___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vcontrol__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcontrol___024root___eval\n"); );
     // Body
+    if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
+        Vcontrol___024root___sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[1U] = 1U;
+    }
     Vcontrol___024root___combo__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[1U] = 1U;
+    // Final
+    vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }
 
 #ifdef VL_DEBUG

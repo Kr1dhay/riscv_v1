@@ -1,6 +1,6 @@
+#include "Vcontrol.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vcontrol.h"
 
 int main(int argc, char **argv, char **env) {
     int cyc;
@@ -16,11 +16,11 @@ int main(int argc, char **argv, char **env) {
     tfp->open ("Vcontrol.vcd");
 
     //intialize simulation inputs
-    top->clk = 1;
+    top->clk = 0;
     top->PC = 0;
     top->EQ = 1;
 
-    for (cyc = 0; cyc < 5; cyc++) {
+    for (cyc = 0; cyc < 16; cyc++) {
         
         //dump variables into VCD file and toggle clock
         for (clk = 0; clk<2; clk++) {
@@ -29,6 +29,13 @@ int main(int argc, char **argv, char **env) {
             top->eval ();
         }
 
-        top->PC = cyc;
+        top->PC = (cyc < 4) ? 0 : 4*(cyc-4);
+
+        if (Verilated::gotFinish()) 
+        exit(0);
     }
+
+    tfp->close();
+    exit(0);
+
 }

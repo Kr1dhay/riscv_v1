@@ -87,6 +87,5 @@ end
 //BRANCH Logic: identity whether instruction is B-type
 always_comb
     Branch = (Op == BRANCH);
-    
 
 endmodule

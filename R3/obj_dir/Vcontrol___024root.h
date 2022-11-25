@@ -21,10 +21,12 @@ class Vcontrol___024root final : public VerilatedModule {
     VL_OUT8(ImmSrc,1,0);
     VL_OUT8(PCsrc,0,0);
     CData/*1:0*/ control__DOT__cu__DOT__ALUOp;
+    CData/*0:0*/ __Vclklast__TOP__clk;
     VL_IN(PC,31,0);
     VL_OUT(ImmExt,31,0);
     IData/*31:0*/ control__DOT__ins;
-    VlUnpacked<CData/*7:0*/, 2> control__DOT__rom__DOT__rom_array;
+    IData/*31:0*/ control__DOT__PC1;
+    VlUnpacked<CData/*7:0*/, 1048576> control__DOT__rom__DOT__rom_array;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
