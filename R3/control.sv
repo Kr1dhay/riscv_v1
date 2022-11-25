@@ -1,5 +1,5 @@
 module control (
-    input logic                     clk,
+    //input logic                     clk,
     input logic     [31:0]          PC,
     input logic                     EQ,
 
@@ -43,11 +43,9 @@ ext32 ext32 (
     .ImmExt(ImmOp)
 );
 
-assign begin
-    rs1 = ins[19:15];
-    rs2 = ins[24:20];
-    rd = ins[11:7];
-end
+assign rs1 = ins[19:15];
+assign rs2 = ins[24:20];
+assign rd = ins[11:7];
 
 /*always_ff @(posedge clk)
     PC1 <= PC;*/
